@@ -15,11 +15,11 @@ struct ContentView: View {
     @State private var dotaHeroes: DotaModel = []
     
     var body: some View {
-        VStack {
+        ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {
-                ForEach(dotaHeroes, id: \.id) { hero in
-                    Text(hero.localizedName)
-                    Divider()
+                    ForEach(dotaHeroes, id: \.id) { hero in     
+                        Text(hero.localizedName)
+                        Divider()
                 }
             }
         }
