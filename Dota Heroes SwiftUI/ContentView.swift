@@ -8,14 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+   
+    private var dotaServices: DotaServices = DotaServices()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Button {
+                getDotaHeroesFromRemote()
+            } label: {
+                Text("Test Network")
+            }
+
         }
         .padding()
+    }
+}
+
+extension ContentView {
+    func getDotaHeroesFromRemote() {
+        Task {
+            do{
+                let dotaHeroesData = try await dotaServices.getHeroes(endPoint: .getHeroes)
+                print(dotaHeroesData)
+            }catch{
+                print(error)
+            }
+        }
     }
 }
 
