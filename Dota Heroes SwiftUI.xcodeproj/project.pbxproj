@@ -25,6 +25,7 @@
 		014E154228E92C2A00786655 /* DotaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E153628E92C2A00786655 /* DotaModel.swift */; };
 		014E154328E92C2A00786655 /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E153828E92C2A00786655 /* HomeServices.swift */; };
 		014E154428E92C2A00786655 /* DotaServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E153928E92C2A00786655 /* DotaServices.swift */; };
+		014E154628E93FC600786655 /* DotaHeroesDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E154528E93FC600786655 /* DotaHeroesDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		014E153628E92C2A00786655 /* DotaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotaModel.swift; sourceTree = "<group>"; };
 		014E153828E92C2A00786655 /* HomeServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
 		014E153928E92C2A00786655 /* DotaServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotaServices.swift; sourceTree = "<group>"; };
+		014E154528E93FC600786655 /* DotaHeroesDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotaHeroesDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				014E152828E92C2A00786655 /* Extension */,
 				014E152728E92C2A00786655 /* Domainless */,
 				014E14DB28E9292900786655 /* Dota_Heroes_SwiftUIApp.swift */,
+				014E154528E93FC600786655 /* DotaHeroesDetail.swift */,
 				014E14DD28E9292900786655 /* ContentView.swift */,
 				014E14DF28E9292A00786655 /* Assets.xcassets */,
 				014E14E128E9292A00786655 /* Preview Content */,
@@ -366,6 +369,7 @@
 				014E14DE28E9292900786655 /* ContentView.swift in Sources */,
 				014E154128E92C2A00786655 /* FeedModel.swift in Sources */,
 				014E154028E92C2A00786655 /* UserModel.swift in Sources */,
+				014E154628E93FC600786655 /* DotaHeroesDetail.swift in Sources */,
 				014E14DC28E9292900786655 /* Dota_Heroes_SwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

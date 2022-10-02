@@ -12,13 +12,24 @@ struct ContentView: View {
     private let dotaServices: DotaServices = DotaServices()
     private let prefs: UserDefaults = UserDefaults()
 //    @State private var dotaHeroes = [String:[DotaModelElement]]()
+    @State var heroName: String = ""
+    @State var heroAttribute: String = ""
+    @State var isNavigate: Bool = false
     @State private var dotaHeroes: DotaModel = []
     
     var body: some View {
         ScrollView {
+            NavigationLink(destination: DotaHeroesDetail(heroName: heroName, heroattribute: heroAttribute), isActive: $isNavigate, label: {EmptyView()})
+            
             LazyVStack(alignment: .leading, spacing: 20) {
-                    ForEach(dotaHeroes, id: \.id) { hero in     
-                        Text(hero.localizedName)
+                    ForEach(dotaHeroes, id: \.id) { hero in
+                        Button {
+                            self.heroName = hero.localizedName
+                            self.heroAttribute = hero.primaryAttr
+                            isNavigate = true
+                        } label: {
+                            Text(hero.localizedName)
+                        }
                         Divider()
                 }
             }
