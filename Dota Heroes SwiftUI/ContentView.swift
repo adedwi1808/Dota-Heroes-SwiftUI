@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
    
     private var dotaServices: DotaServices = DotaServices()
+    private let prefs: UserDefaults = UserDefaults()
     
     var body: some View {
         VStack {
@@ -29,11 +30,19 @@ extension ContentView {
         Task {
             do{
                 let dotaHeroesData = try await dotaServices.getHeroes(endPoint: .getHeroes)
-                print(dotaHeroesData)
+                setDotaHeroesToLocale(data: dotaHeroesData)
             }catch{
                 print(error)
             }
         }
+    }
+    
+    func setDotaHeroesToLocale(data: DotaModel) {
+        prefs.setDataToLocal(data.self, with: .dotaHeroes)
+    }
+    
+    func getDotaHeroesDataFromLocale() -> DotaModel {
+        prefs.getDataFromLocal(DotaModel.self, with: .dotaHeroes) ?? DotaModel()
     }
 }
 
