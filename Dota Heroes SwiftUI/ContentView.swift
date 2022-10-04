@@ -31,13 +31,14 @@ struct ContentView: View {
                             } label: {
                                 Text(hero.localizedName)
                             }
+                            Divider()
                         }
                     } header: {
                         Text("\(key)")
                             .textCase(.uppercase)
                             .font(.largeTitle)
+                        Divider()
                     }
-                    Divider()
                 }
             }
         }
