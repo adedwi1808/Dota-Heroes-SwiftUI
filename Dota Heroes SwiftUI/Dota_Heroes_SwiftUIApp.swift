@@ -11,7 +11,9 @@ import SwiftUI
 struct Dota_Heroes_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                ContentView()
+            }
         }
     }
 }
