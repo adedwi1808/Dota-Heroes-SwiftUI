@@ -8,36 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
-   
+    
     private let dotaServices: DotaServices = DotaServices()
     private let prefs: UserDefaults = UserDefaults()
-//    @State private var dotaHeroes = [String:[DotaModelElement]]()
+    @State private var dotaHeroesDictionary = [String:[DotaModelElement]]()
     @State var heroName: String = ""
     @State var heroAttribute: String = ""
     @State var isNavigate: Bool = false
-    @State private var dotaHeroes: DotaModel = []
     
     var body: some View {
         ScrollView {
             NavigationLink(destination: DotaHeroesDetail(heroName: heroName, heroattribute: heroAttribute), isActive: $isNavigate, label: {EmptyView()})
             
             LazyVStack(alignment: .leading, spacing: 20) {
-                    ForEach(dotaHeroes, id: \.id) { hero in
-                        Button {
-                            self.heroName = hero.localizedName
-                            self.heroAttribute = hero.primaryAttr
-                            isNavigate = true
-                        } label: {
-                            Text(hero.localizedName)
+                ForEach(dotaHeroesDictionary.keys.sorted(), id: \.self) { key in
+                    Section {
+                        ForEach(dotaHeroesDictionary["\(key)"]!, id: \.name){hero in
+                            Button {
+                                self.heroName = hero.localizedName
+                                self.heroAttribute = hero.primaryAttr
+                                isNavigate = true
+                            } label: {
+                                Text(hero.localizedName)
+                            }
                         }
-                        Divider()
+                    } header: {
+                        Text("\(key)")
+                            .textCase(.uppercase)
+                            .font(.largeTitle)
+                    }
+                    Divider()
                 }
             }
         }
         .padding()
         .onAppear {
             getDotaHeroesFromRemote()
-            dotaHeroes = getDotaHeroesDataFromLocale()
+            dotaHeroesDictionary = classifyDotaHeroesData(data: getDotaHeroesDataFromLocale())
         }
     }
 }
@@ -62,14 +69,14 @@ extension ContentView {
         prefs.getDataFromLocal(DotaModel.self, with: .dotaHeroes) ?? DotaModel()
     }
     
-//    func classifyDotaHeroesData(data: DotaModel) -> [String : [DotaModelElement]] {
-//        var res = [String : [DotaModelElement]]()
-//        data.forEach {
-//            if res[$0.primaryAttr] == nil {res[$0.primaryAttr] = []}
-//            res[$0.primaryAttr]?.append($0)
-//        }
-//        return res
-//    }
+    func classifyDotaHeroesData(data: DotaModel) -> [String : [DotaModelElement]] {
+        var res = [String : [DotaModelElement]]()
+        data.forEach {
+            if res[$0.primaryAttr] == nil {res[$0.primaryAttr] = []}
+            res[$0.primaryAttr]?.append($0)
+        }
+        return res
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
